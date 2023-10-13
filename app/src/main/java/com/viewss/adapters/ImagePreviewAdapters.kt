@@ -2,7 +2,6 @@ package com.viewss.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
@@ -10,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.statussaver.R
 import com.example.statussaver.databinding.ItemImagePreviewsBinding
-import com.example.statussaver.databinding.ItemMediaBinding
-import com.modelss.MEDIA_TYPE_IMAGE
 import com.modelss.MediaModels
 import com.utilss.saveStatus
 

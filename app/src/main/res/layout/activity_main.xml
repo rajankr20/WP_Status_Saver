@@ -25,10 +25,10 @@
 
              <com.google.android.material.appbar.MaterialToolbar
                  android:layout_width="match_parent"
+                 android:layout_height="?attr/actionBarSize"
                  android:id="@+id/tool_bar"
                  app:navigationIcon="@drawable/baseline_menu_24"
                  app:navigationIconTint="@color/whites"
-                 android:layout_height="?attr/actionBarSize"
                  android:background="@color/colorPrimarys"
                  app:title="@string/app_name"
                  app:titleCentered="true"
@@ -45,16 +45,8 @@
              app:layout_constraintStart_toStartOf="parent"
              app:layout_constraintTop_toBottomOf="@+id/app_bar_layout" />
 
-
-
-
      </androidx.constraintlayout.widget.ConstraintLayout>
-
  </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
-
 
     <LinearLayout
         android:id="@+id/splash_Screen_holder"

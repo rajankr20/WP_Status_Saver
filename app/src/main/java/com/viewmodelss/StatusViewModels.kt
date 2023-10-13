@@ -1,5 +1,6 @@
 package com.viewmodelss
 
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +20,7 @@ class StatusViewModels(val repos: StatusRepos):ViewModel() {
 
     private val wpStatusLiveData get()= repos.whatsAppStatusLiveData
     private val wpBusinessStatusLiveData get() = repos.whatsAppBusinessStatusLiveData
-
+    private val TAG = "StatusViewModel"
     //wp main
     val whatsAppImagesLiveData = MutableLiveData<ArrayList<MediaModels>>()
     val whatsAppVideosLiveData = MutableLiveData<ArrayList<MediaModels>>()
@@ -33,18 +34,21 @@ class StatusViewModels(val repos: StatusRepos):ViewModel() {
     init {
         SharedPrefUtils.init(repos.context)
 
-        val wpPermission = SharedPrefUtils.getPrefBoolean(SharedPrefKeys.PREF_KEY_WP_PERMISSION_GRANTED, false)
-        val wpBusinessPermission = SharedPrefUtils.getPrefBoolean(SharedPrefKeys.PREF_KEY_WP_BUSINESS_PERMISSION_GRANTED, false)
+        val wpPermission =
+            SharedPrefUtils.getPrefBoolean(SharedPrefKeys.PREF_KEY_WP_PERMISSION_GRANTED, false)
+        val wpBusinessPermission =
+            SharedPrefUtils.getPrefBoolean(SharedPrefKeys.PREF_KEY_WP_BUSINESS_PERMISSION_GRANTED, false)
 
         isPermissionsGranted  = wpPermission && wpBusinessPermission
+        Log.d(TAG, "Status View Model: isPermissions=> $isPermissionsGranted ")
         if (isPermissionsGranted){
+            Log.d(TAG, "Status View Model: Permissions Already Granted Getting Statuses ")
             CoroutineScope(Dispatchers.IO).launch {
                 repos.getAllStatuses()
-
             }
             CoroutineScope(Dispatchers.IO).launch {
 
-                repos.getAllStatuses(Constants.TYPE_WHATSAPP_MAIN)
+                repos.getAllStatuses(Constants.TYPE_WHATSAPP_BUSINESS)
             }
         }
     }
@@ -53,6 +57,7 @@ class StatusViewModels(val repos: StatusRepos):ViewModel() {
     fun getWhatsAppStatuses(){
         CoroutineScope(Dispatchers.IO).launch {
           if (!isPermissionsGranted){
+              Log.d(TAG, "getWhatsAppStatuses: Requesting WP Statuses")
               repos.getAllStatuses()
           }
 
@@ -95,6 +100,7 @@ class StatusViewModels(val repos: StatusRepos):ViewModel() {
     fun getWhatsAppBusinessStatuses(){
         CoroutineScope(Dispatchers.IO).launch {
             if (!isPermissionsGranted){
+                Log.d(TAG, "getWhatsAppStatuses: Requesting WP Business Statuses")
                 repos.getAllStatuses(Constants.TYPE_WHATSAPP_BUSINESS)
             }
 

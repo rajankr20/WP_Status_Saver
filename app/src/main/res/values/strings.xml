@@ -8,4 +8,5 @@
     <string name="todo">TODO</string>
     <string name="no_media_found">No Media Found</string>
     <string name="textviews">TextView</string>
+    <string name="textview1">TextView</string>
 </resources>

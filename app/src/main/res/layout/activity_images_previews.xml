@@ -11,14 +11,14 @@
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blacks"
+        android:background="#80000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_backs"
         app:navigationIconTint="@color/whites"
-        app:title="@string/app_name"
+        app:title="Status Saver"
         app:titleTextColor="@color/whites" />
 
     <androidx.viewpager2.widget.ViewPager2

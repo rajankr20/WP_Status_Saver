@@ -6,10 +6,8 @@ import android.util.Log
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.devatrii.statussaver.utils.Constants
-import com.example.statussaver.R
 import com.example.statussaver.databinding.ActivityVideosPreviewsBinding
 import com.modelss.MediaModels
-import com.viewss.adapters.ImagePreviewAdapters
 import com.viewss.adapters.VideoPreviewAdapters
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

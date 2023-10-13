@@ -29,8 +29,8 @@ class FragmentMedias : Fragment() {
             arguments?.let {
 
                 val repos = StatusRepos(requireActivity())
-                viewModels= ViewModelProvider(requireActivity(), StatusViewModelFactorys(repos))[StatusViewModels::class.java]
-
+                viewModels= ViewModelProvider(requireActivity(),
+                    StatusViewModelFactorys(repos))[StatusViewModels::class.java]
                 val mediaType = it.getString(Constants.MEDIA_LIST_KEY, "")
                  when(mediaType){
                      Constants.MEDIA_TYPE_WHATSAPP_IMAGES->{
@@ -38,7 +38,6 @@ class FragmentMedias : Fragment() {
                              val filteredList = unFilteredList.distinctBy { model->
                                  model.fileName
                              }
-
                              val list=ArrayList<MediaModels>()
                              filteredList.forEach{model->
                                  list.add(model)
@@ -50,10 +49,8 @@ class FragmentMedias : Fragment() {
                              }else{
                                  tempMediaText.visibility = View.GONE
                              }
-
                          }
                      }
-
                      Constants.MEDIA_TYPE_WHATSAPP_VIDEOS->{
                          viewModels.whatsAppVideosLiveData.observe(requireActivity()){unFilteredList->
                              val filteredList = unFilteredList.distinctBy { model->
@@ -74,13 +71,11 @@ class FragmentMedias : Fragment() {
                          }
                      }
 
-
                      Constants.MEDIA_TYPE_WHATSAPP_BUSINESS_IMAGES->{
                          viewModels.whatsAppBusinessImagesLiveData.observe(requireActivity()){unFilteredList->
                              val filteredList = unFilteredList.distinctBy { model->
                                  model.fileName
                              }
-
                              val list=ArrayList<MediaModels>()
                              filteredList.forEach{model->
                                  list.add(model)
@@ -101,7 +96,6 @@ class FragmentMedias : Fragment() {
                              val filteredList = unFilteredList.distinctBy { model->
                                  model.fileName
                              }
-
                              val list=ArrayList<MediaModels>()
                              filteredList.forEach{model->
                                  list.add(model)
@@ -119,7 +113,6 @@ class FragmentMedias : Fragment() {
             }
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -14,24 +14,21 @@ class FragmentSettingss : Fragment() {
     private val binding by lazy {
         FragmentSettingssBinding.inflate(layoutInflater)
     }
-
     private val list = ArrayList<SettingsModels>()
-    private val adapter by lazy {
+    private val adapters by lazy {
         SettingsAdapter(list, requireActivity())
     }
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          binding.apply {
-             settingsRecyclerView.adapter = adapter
-
+             settingsRecyclerView.adapter = adapters
              list.add(
-                 SettingsModels(
-                     title = "How to use",
-                     desc = "Know how to download statuses"
-                 )
+                SettingsModels(
+                    title = "howt to use",
+                    desc = "know how to download statuses"
+                )
+
              )
              list.add(
                  SettingsModels(
@@ -66,11 +63,8 @@ class FragmentSettingss : Fragment() {
 
          }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ) =binding.root
-
-
 }

@@ -1,7 +1,6 @@
 package com.datas
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -28,6 +27,7 @@ class StatusRepos(val context:Context) {
     private val wpStatusesList = ArrayList<MediaModels>()
     private val wpBusinessStatusesList = ArrayList<MediaModels>()
 
+    private val TAG = "StatusRepos"
     fun getAllStatuses(whatsAppType: String = Constants.TYPE_WHATSAPP_MAIN) {
         val treeUri = when (whatsAppType) {
             Constants.TYPE_WHATSAPP_MAIN -> {
@@ -39,6 +39,7 @@ class StatusRepos(val context:Context) {
                     ?.toUri()!!
             }
         }
+        Log.d(TAG, "getAllStatuses: $treeUri")
 
         activity.contentResolver.takePersistableUriPermission(
             treeUri,
@@ -49,9 +50,10 @@ class StatusRepos(val context:Context) {
 
         fileDocument?.let {
             it.listFiles().forEach { file ->
+                Log.d(TAG,"getAllStatuses:${file.name}")
                 if (file.name != ".nomedia" && file.isFile) {
                     val isDownloaded = context.isStatusExist(file.name!!)
-                    Log.d("Status REPO","getAllStatuses: Extension: ${getFileExtension((file.name!!))} || ${file.name}")
+                    Log.d(TAG,"getAllStatuses: Extension: ${getFileExtension((file.name!!))} || ${file.name}")
 
                     val type = if (getFileExtension(file.name!!) == "mp4") {
                         MEDIA_TYPE_VIDEO
@@ -82,10 +84,12 @@ class StatusRepos(val context:Context) {
 
             when (whatsAppType) {
                 Constants.TYPE_WHATSAPP_MAIN -> {
+                    Log.d(TAG,"getAllStatuses: pushing Value to wp live Data")
                     whatsAppStatusLiveData.postValue(wpStatusesList)
                 }
 
                 else -> {
+                    Log.d(TAG,"getAllStatuses: pushing Value to Wp Business live Data")
                     whatsAppBusinessStatusLiveData.postValue(wpBusinessStatusesList)
                 }
 

@@ -3,8 +3,6 @@
 
     <style name="TabText">
         <item name="android:textSize">16sp</item>
-
-
     </style>
     <style name="BottomNavStyle">
         <item name="colorSecondaryContainer">@color/colorPrimaryHighlights</item>

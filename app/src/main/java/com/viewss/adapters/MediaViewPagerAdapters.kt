@@ -20,14 +20,14 @@ class MediaViewPagerAdapters (
                 // images media fragment
                 val mediaFragment = FragmentMedias()
                 val bundle = Bundle()
-                bundle.putString(Constants.MEDIA_LIST_KEY, imageType)
+                bundle.putString(Constants.MEDIA_TYPE_KEY, imageType)
                 mediaFragment.arguments = bundle
                 mediaFragment
             }else->{
                 // video media fragemnt
                 val mediaFragment = FragmentMedias()
                 val bundle = Bundle()
-                bundle.putString(Constants.MEDIA_LIST_KEY, videosType)
+                bundle.putString(Constants.MEDIA_TYPE_KEY, videosType)
                 mediaFragment.arguments = bundle
                 mediaFragment
             }

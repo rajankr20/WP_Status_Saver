@@ -77,9 +77,10 @@ private fun saveStatusBeforeQ(context: Context,uri:Uri):Boolean {
             val sourceFile = documentFile.toRawFile(context)?.takeIf { f2 ->
                 f2.canRead()
             }
-            val destinationFile = sourceFile.let { sourceF ->
-                File("${Environment.getExternalStorageDirectory()}/Documents/${context.getString(R.string.app_name)},sourceF.name")
-            }
+             val destinationFile=sourceFile?.let { sourceF ->
+                 File("${Environment.getExternalStorageDirectory()}/Documents/${"Status Saver"}",
+                     sourceF.name)
+             }
 
             destinationFile?.let { destFile ->
                 if (!destFile.parentFile?.exists()!!) {

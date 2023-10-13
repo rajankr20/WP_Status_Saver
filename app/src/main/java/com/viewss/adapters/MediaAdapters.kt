@@ -2,7 +2,6 @@ package com.viewss.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.devatrii.statussaver.utils.Constants
 import com.example.statussaver.R
-import com.example.statussaver.R.*
 import com.example.statussaver.databinding.ItemMediaBinding
 import com.modelss.MEDIA_TYPE_IMAGE
 import com.modelss.MediaModels
@@ -20,7 +18,8 @@ import com.utilss.saveStatus
 import com.viewss.activities.ImagesPreviews
 import com.viewss.activities.VideosPreviews
 
-class MediaAdapters (val list: ArrayList<MediaModels>, val context: Context):RecyclerView.Adapter<MediaAdapters.ViewHolder>(){
+class MediaAdapters (val list: ArrayList<MediaModels>, val context: Context):
+    RecyclerView.Adapter<MediaAdapters.ViewHolder>(){
 
     inner class ViewHolder(val binding:ItemMediaBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(mediaModels: MediaModels){
@@ -43,7 +42,7 @@ class MediaAdapters (val list: ArrayList<MediaModels>, val context: Context):Rec
                         // go image preview activity
                         Intent().apply {
                             putExtra(Constants.MEDIA_LIST_KEY, list)
-                            putExtra(Constants.MEDIA_LIST_KEY, layoutPosition)
+                            putExtra(Constants.MEDIA_SCROLL_KEY, layoutPosition)
                             setClass(context, ImagesPreviews::class.java)
                             context.startActivity(this)
                         }
@@ -51,7 +50,7 @@ class MediaAdapters (val list: ArrayList<MediaModels>, val context: Context):Rec
                         // go to video preview activity
                         Intent().apply {
                             putExtra(Constants.MEDIA_LIST_KEY, list)
-                            putExtra(Constants.MEDIA_LIST_KEY, layoutPosition)
+                            putExtra(Constants.MEDIA_SCROLL_KEY, layoutPosition)
                             setClass(context, VideosPreviews::class.java)
                             context.startActivity(this)
                         }

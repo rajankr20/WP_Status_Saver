@@ -10,6 +10,4 @@ class StatusViewModelFactorys(private val repos: StatusRepos):ViewModelProvider.
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
          return StatusViewModels(repos)as T
     }
-
-
 }

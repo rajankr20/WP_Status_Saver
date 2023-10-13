@@ -36,10 +36,10 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             splashLogic()
             requestPermission()
-            val fragmentWhatsAppAppStatus = FragmentStatuss()
+            val fragmentWhatsAppStatus = FragmentStatuss()
             val bundle = Bundle()
             bundle.putString(Constants.FRAGMENT_TYPE_KEY, Constants.TYPE_WHATSAPP_MAIN)
-            replaceFragment(fragmentWhatsAppAppStatus, bundle)
+            replaceFragment(fragmentWhatsAppStatus, bundle)
 
             toolBar.setNavigationOnClickListener {
                 drawerLayout.open()
@@ -49,22 +49,23 @@ class MainActivity : AppCompatActivity() {
                 when (it.itemId) {
                     R.id.menu_status -> {
                         //whatsapp status
-                        val fragmentWhatsAppAppStatus = FragmentStatuss()
+                        val fragmentWhatsAppStatus = FragmentStatuss()
                         val bundle = Bundle()
                         bundle.putString(Constants.FRAGMENT_TYPE_KEY, Constants.TYPE_WHATSAPP_MAIN)
-                        replaceFragment(fragmentWhatsAppAppStatus, bundle)
+                        replaceFragment(fragmentWhatsAppStatus, bundle)
+                        drawerLayout.close()
 
                     }
 
                     R.id.menu_business_status -> {
                         //whatsapp b status
-                        val fragmentWhatsAppAppStatus = FragmentStatuss()
+                        val fragmentWhatsAppStatus = FragmentStatuss()
                         val bundle = Bundle()
                         bundle.putString(
                             Constants.FRAGMENT_TYPE_KEY,
                             Constants.TYPE_WHATSAPP_BUSINESS
                         )
-                        replaceFragment(fragmentWhatsAppAppStatus, bundle)
+                        replaceFragment(fragmentWhatsAppStatus, bundle)
                         drawerLayout.close()
                     }
 
@@ -88,9 +89,9 @@ class MainActivity : AppCompatActivity() {
                 false
             )
             if (!isPermissionGranted) {
+
                 ActivityCompat.requestPermissions(
-                    activity,
-                    arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    activity, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
                     PERMISSION_REQUEST_CODE
                 )
                 Toast.makeText(activity, "please Granted Permissions", Toast.LENGTH_SHORT).show()
@@ -115,19 +116,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun splashLogic() {
-        binding.apply {
-            splashLayout.cardView.slideFromStart()
-            Handler(Looper.myLooper()!!).postDelayed({
-                splashScreenHolder.slideToEndWithFadeOut()
-                splashScreenHolder.visibility = View.GONE
-            }, 2000)
-        }
-    }
+ private fun splashLogic(){
+     binding.apply {
+         splashLayout.cardView.slideFromStart()
+         Handler(Looper.myLooper()!!).postDelayed({
+             splashScreenHolder.slideToEndWithFadeOut()
+             splashScreenHolder.visibility= View.GONE
+         }, 2000)
+     }
+ }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
        val fragment = supportFragmentManager?.findFragmentById(R.id.fragment_container)
-        fragment?.onActivityResult(resultCode, resultCode, data)
+        fragment?.onActivityResult(requestCode, resultCode, data)
     }
 }

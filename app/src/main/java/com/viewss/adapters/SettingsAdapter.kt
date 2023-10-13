@@ -11,10 +11,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.statussaver.R
 import com.example.statussaver.databinding.DialogGuidesBinding
-//import com.devatrii.statussaver.R
-//import com.example.statussaver.databinding.DialogGuideBinding
-//import com.devatrii.statussaver.databinding.ItemSettingsBinding
-//import com.devatrii.statussaver.models.SettingsModel
 import com.example.statussaver.databinding.ItemSettingsBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.modelss.SettingsModels
